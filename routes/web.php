@@ -27,7 +27,7 @@ $router->post('/login', 'AuthController@login');
 $router->group([
     'prefix' => 'blogs',
     'name'   => 'blogs',
-    'middleware' => 'auth',
+    'middleware' => 'auth:api',
 ],function() use ($router){
     $router->get('/', 'BlogController@index');
     $router->get('/{id}', 'BlogController@show');
