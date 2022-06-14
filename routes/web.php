@@ -18,17 +18,11 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/login', 'AuthController@login');
-$router->group([
-    'middleware' => 'auth',
-],function() use ($router){
-    $router->get('/user', function () use ($router) {
-        return $router->app->version();
-    });
-});
 
 $router->group([
     'prefix' => 'blogs',
-    'name'   => 'blogs'
+    'name'   => 'blogs',
+    'middleware' => 'auth',
 ],function() use ($router){
     $router->get('/', 'BlogController@index');
     $router->get('/{id}', 'BlogController@show');

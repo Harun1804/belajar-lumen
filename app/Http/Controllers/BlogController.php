@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -127,6 +128,7 @@ class BlogController extends Controller
                 'title'     => $request->title,
                 'slug'      => Str::slug($request->title),
                 'content'   => $request->content,
+                'user_id'   => Auth::id()
             ]);
 
             return response()->json([
@@ -178,7 +180,7 @@ class BlogController extends Controller
     */
     public function show($id)
     {
-        $blogs = Blog::find($id);
+        $blogs = Blog::with('user')->find($id);
         if($blogs){
             return response()->json([
                 'status'    => 'success',
