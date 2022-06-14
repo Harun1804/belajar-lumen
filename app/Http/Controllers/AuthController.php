@@ -6,6 +6,7 @@ use App\Models\User;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -86,5 +87,16 @@ class AuthController extends Controller
                 ], 404);
             }
         }
+    }
+
+    public function logout(Request $request)
+    {
+        // Auth::logout();
+        $this->jwt->invalidate($this->jwt->getToken());
+        // $this->jwt->parseToken()->invalidate();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Logout success'
+        ], 200);
     }
 }
