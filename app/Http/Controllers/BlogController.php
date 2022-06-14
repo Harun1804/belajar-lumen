@@ -51,7 +51,8 @@ class BlogController extends Controller
     */
     public function index()
     {
-        $blogs = DB::table('blogs')->get();
+        // $blogs = DB::table('blogs')->get();
+        $blogs = Blog::with('user')->get();
         if($blogs->count() > 0){
             return response()->json([
                 'status'    => 'success',
