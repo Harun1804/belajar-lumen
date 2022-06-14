@@ -46,6 +46,8 @@ class AuthController extends Controller
                         'status' => 'success',
                         'message'=> '',
                         'data'   => $data,
+                    ],200,[
+                        'Authorization' => "Bearer $token"
                     ]);
 
                 } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
