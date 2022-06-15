@@ -32,7 +32,7 @@ $router->group([
 ],function() use ($router){
     $router->get('/', 'BlogController@index');
     $router->get('/{id}', 'BlogController@show');
-    $router->post('/', 'BlogController@store');
+    $router->post('/store', 'BlogController@store');
     $router->put('/{id}/update', 'BlogController@update');
     $router->delete('/{id}/delete', 'BlogController@destroy');
 });

@@ -68,7 +68,7 @@ class BlogController extends Controller
 
     /**
      * @OA\Post(
-     *  path="/blogs",
+     *  path="/blogs/store",
      *  tags={"Blogs"},
      *  summary="Create A Blog",
      *  description="Create A Blog",
